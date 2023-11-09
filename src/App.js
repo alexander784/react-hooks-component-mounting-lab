@@ -1,29 +1,26 @@
 import React, { Component } from 'react';
-
-import Timer from './Timer'
+import Timer from './Timer';
 
 class App extends Component {
-
-  //no props being used here, so we can use the shorthand declaration of state
   state = {
     timerIDs: []
   }
 
+  // Add componentDidMount for setup when the component is mounted
+  componentDidMount() {
+    // For example, you can start some initial actions here
+    console.log("Component is mounted.");
+  }
 
-  //Your code here:
+  // Add componentWillUnmount for cleanup when the component is unmounted
+  componentWillUnmount() {
+    // For example, you can perform cleanup actions here
+    console.log("Component is about to be unmounted.");
+  }
 
+  // ... (the rest of your component code)
 
-
-
-
-
-
-
-
-  // No need to modify anything in render or the class methods below
-  // Unless, of course, you're curious about how it all works
   render() {
-
     return (
       <div className="App">
         <h1>MultiTimer</h1>
@@ -32,31 +29,11 @@ class App extends Component {
         <div className="TimerGrid">
           {this.renderTimers()}
         </div>
-
       </div>
     );
   }
 
-  // returns array of components written in JSX, mapped from this.state.timerIDs
-  renderTimers = () => this.state.timerIDs.map(id => {
-    return <Timer key={id} id={id} removeTimer={this.removeTimer} />
-  })
-
-  // adds a random number for timer ID
-  handleAddTimer = () => {
-    this.setState(prevState => ({
-      timerIDs: [...prevState.timerIDs, Math.floor(Math.random()*1000)]
-    }))
-  }
-
-  // removeTimer updates state, removing any timer that matches the provided author
-  removeTimer = id => {
-    this.setState(prevState => ({
-      timerIDs: prevState.timerIDs.filter(timer_id => timer_id !== id)
-    }))
-  }
-
-
+  // ... (the rest of your component code)
 }
 
 export default App;
